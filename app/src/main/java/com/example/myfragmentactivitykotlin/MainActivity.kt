@@ -1,27 +1,22 @@
 package com.example.myfragmentactivitykotlin
 
 import android.os.Bundle
-import android.support.design.widget.TabLayout
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
-import android.support.v7.app.AppCompatActivity
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.tabs.TabLayout
+import androidx.fragment.app.Fragment as Fragment1
 
 
 class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
 
     var tabLayout: TabLayout? = null
     var frameLayout: FrameLayout? = null
-    var fragment: Fragment? = null
+    var fragment: Fragment1? = null
     var fragmentManager: FragmentManager? = null
     var fragmentTransaction: FragmentTransaction? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         tabLayout = findViewById<TabLayout>(R.id.tabLayout)
         frameLayout = findViewById<FrameLayout>(R.id.frameLayout)
 
-        fragment = JavaFragment()
+        fragment = Fragment1()
         fragmentManager = supportFragmentManager
         fragmentTransaction = fragmentManager!!.beginTransaction()
         fragmentTransaction!!.replace(R.id.frameLayout, fragment)
@@ -40,11 +35,9 @@ class MainActivity : AppCompatActivity() {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 // creating cases for fragment
                 when (tab.position) {
-                    0 -> fragment = JavaFragment()
-                    1 -> fragment = AndroidFragment()
-                    2 -> fragment = KotlinFragment()
-                    3 -> fragment = PhpFragment()
-                    4 -> fragment = PythonFragment()
+                    0 -> fragment = fragment1_fragment()
+                    1 -> fragment = fragment2_fragment()
+
                 }
                 val fm = supportFragmentManager
                 val ft = fm.beginTransaction()
@@ -61,6 +54,13 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
+
+    }
+
+    private fun fragment1_fragment() {
+
+    }
+    private fun fragment2_fragment(): Fragment1? {
 
     }
 }
